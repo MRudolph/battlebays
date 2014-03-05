@@ -1,0 +1,38 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  activerecord: 
+    models: 
+      user: Benutzer
+      article: Text
+      tile: Kachel
+      page: Bild
+    attributes:
+      user:
+        password: Passwort
+        password_confirmation: Passwort Wiederholung
+        points: Punkte
+        username: Name
+        photo: Foto/Avatar
+        shown: Angezeigter Name
+      article:
+         title: Titel
+         content: Text
+         user: Autor
+      user_session:
+        username: Name
+        password: Passwort
+      tile:
+        image: Bild
+      page:
+        title: Titel
+        moderated: moderiert
+        size: Kachelgröße
+    errors:
+      models:
+        tile:
+          attributes:
+            image:
+              wrong_dimensions: muss {{width}}x{{height}} Pixel groß sein.
+              no_image: wurde nicht erkannt.

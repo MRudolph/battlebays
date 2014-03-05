@@ -1,0 +1,20 @@
+%table.tilemap{:class=>tilemap_css(page.width,page.height)}
+  -table.each_row do |row|
+    %tr
+      -row.each_with_column do |tile,col|
+        -page = tile.page if !page  && tile.is_a?(Tile)
+        -c=classify_tile(tile)
+        -own = tile.user_id==current_user.id rescue nil
+        -awaiting_activation = own && c==:uploaded
+        -uploadable=tile.is_a?(Tile) && tile.can_be_uploaded?(current_user)
+        -tile_tag col,row.row,tile,(c==:activated) || awaiting_activation || (uploadable && tile.image.file?) do
+          -case
+          -when awaiting_activation
+            .actions
+              :plain
+                ...
+          -when uploadable
+            -tile_action_box tile do
+              .actions
+                =remaining_time_of tile
+                = link_to "hochladen",edit_tile_path(tile)

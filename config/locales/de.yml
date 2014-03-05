@@ -1,0 +1,58 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  by : von
+  actions:
+    edit: bearbeiten
+    delete: löschen
+    show: ansehen
+    confirm_sure: Bist du sicher?
+    upload: hochladen
+    logged_in: Login erfolgreich. Hallo {{name}}.
+    logged_out: Du hast dich erfolgreich ausgeloggt.
+    created_with_title: "{{type}} \"{{title}}\" wurde erstellt."
+    created_without_title: "{{type}} wurde erstellt."
+    updated_with_title: "{{type}} \"{{title}}\" wurde gespeichert."
+    updated_without_title: "{{type}} wurde gespeichert."    
+    deleted_with_title: "{{type}} \"{{title}}\" wurde gelöscht."
+    deleted_without_title: "{{type}} wurde gelöscht." 
+
+  tiles:
+    reserve: reservieren
+  messages:
+    error: Fehler
+    notice: Hinweis
+  pages:
+    new: Neues Bild
+    start: Startseite
+    create: Bild erstellen
+    list: Bilderliste
+  users:
+    login: Einloggen
+    logout: Ausloggen
+    list: Benutzerverzeichnis
+    loggedin: Erfolgreich eingeloggt
+    loggedout: Erfolgreich ausgeloggt
+    create_submit: Account erstellen
+    update_submit: Änderungen speichern
+    create: Account erstellen
+    update: Account bearbeiten
+    missing: unbekannter Benutzer
+    my_page: Meine Seite
+    
+  articles:
+    create: Neuen Text erstellen
+    update: Text bearbeiten
+    create_submit: Text speichern
+    update_submit: Text speichern
+    list: Liste der Texte
+    
+  navigation:
+    back: Zurück
+
+    
+  errors:
+    "404": Resource nicht gefunden
+    "500": Fehler
+    resource_not_found: '{{name}} wurde nicht gefunden!'

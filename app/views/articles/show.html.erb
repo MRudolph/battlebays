@@ -1,0 +1,11 @@
+<% title h(@article.title) %>
+
+<%=textilize @article.content %>
+
+
+<% context_menu_for @article %>
+<% content_for :head do%>
+  <script type="text/javascript" src="/javascripts/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="/javascripts/lightbox.js"></script>
+<link rel="stylesheet" href="/stylesheets/lightbox.css" type="text/css" media="screen" />
+<% end %>

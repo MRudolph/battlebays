@@ -1,0 +1,12 @@
+Beachte bitte vor dem Upload folgende Regeln
+%ul
+  -p=uploadform.page
+  -attr= uploadform.errors.on(:image) ? {:class=>'errormark'} : {}
+  %li{attr}
+    = "Das Bild muss #{p.width}x#{p.height} Pixel groß sein"
+  %li Das Bild darf nicht gegen geltendes Recht verstoßen
+  %li Du musst die Rechte an dem Bild besitzen
+-form_for uploadform, :html => { :multipart => true } do |f|
+  =f.label :image
+  =f.file_field :image
+  =f.submit t('actions.upload')

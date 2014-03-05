@@ -1,0 +1,12 @@
+<table class="tilemap">
+<% left,right,top,bottom = table.left,table.right,table.top,table.bottom %>
+<% (top..bottom).each do |row| %>
+  <tr>
+  <% (left..right).each do |col| %>
+    <td id="<%=coordinate_id(col,row) %>" >
+      <%= render_tile(table[col,row],col,row,page,mode) %> 
+    </td>
+  <%end%>
+  </tr>
+<%end%>
+</table>

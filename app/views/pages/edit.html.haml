@@ -1,0 +1,26 @@
+- title h(@page.title) 
+- context_menu_for @page
+
+.edit.fullheight
+  %h1= @page.title
+  -if flash[:notice]
+    .flash_notice
+      %h2 Hinweis
+      .infoblock
+        = flash[:notice]
+  - scores = @page.tiles.activated.count(:group=>:user).sort_by {|key,value| -value }
+  - unless scores.empty?
+    - max=scores.first[1]
+    %table
+      -scores.each do |user,value|
+        %tr
+          %td
+            = "#{user_text_link(user) }"
+            %br/
+            .bar{:style=>"width:#{(100.0*value/max).round}%;"}
+              = "#{value} Kacheln"
+
+.fullheight.fullwidth.content
+  -tt=create_reservations_for_page @page.tiles
+  =render_table tt,'edit',@page
+

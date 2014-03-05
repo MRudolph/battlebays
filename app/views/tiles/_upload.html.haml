@@ -1,0 +1,43 @@
+-c=upload.classify
+-p=upload.page
+-w,h=p.width,p.height
+.infoblock
+  %h2
+    Grafik
+  -case c
+  -when :reserved
+    .missing{:style => "width:#{w};height:#{h}"}
+    -if upload.can_be_uploaded?(current_user)
+      .uploadform
+        Hier kannst du dein fertiges Bild hochladen.
+        = render :partial => 'uploadform',:object=>upload
+        -neighbours=@tile.neighbours
+        -unless neighbours.empty?
+          %br/
+          Nachbar-Kacheln herunterladen(Rechtsklick->Ziel speichern unter...):
+          -neighbours.each_with_index do |n,i|
+            =link_to(i+1,n.image.url)
+
+    -else
+      =user_text_link(tile.user)
+      hat noch keine Grafik hochgeladen
+  -when :activated
+    =image_tag upload.image.url
+  -when :uploaded
+    -up_ok = upload.can_be_uploaded?(current_user)
+    -ac_ok = upload.can_be_activated?(current_user)
+    -if up_ok || ac_ok
+      =image_tag upload.image.url
+    -else
+      .missing{:style => "width:#{w};height:#{h}"}
+      Dieses Bild ist hochgeladen, muss aber erst freigeschaltet werden.
+    -if ac_ok
+      Du kannst dieses Bild jetzt
+      -form_for upload do |f|
+        =f.hidden_field  :activated,true
+        = link_to_function "freischalten", "$(this).up('form').submit()"
+    -if up_ok
+      Bis das Bild freigeschaltet ist, kannst du es ersetzen.
+      Dazu lade bitte einfach die überarbeitete Fassung hoch.
+      = render :partial => 'uploadform',:object=>upload
+        

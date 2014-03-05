@@ -1,0 +1,12 @@
+<% title h(@page.title)%>
+<% content_for :head  do %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'height' %>
+<% end %>
+
+<% context_menu_for @page %>
+<% tt=@page.tile_table %>
+<%# create_reservations_for_page tt,@page,current_user %>
+<div class="fullheight content">
+  <%= render_table tt,'show',@page  %>
+</div>

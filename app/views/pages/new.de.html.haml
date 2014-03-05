@@ -1,0 +1,26 @@
+- title t('pages.create')
+=boxed_error_messages_for @page
+.infoblock
+  -form_for @page do |f|
+    %p
+      = f.label :title
+      %br/
+      = f.text_field :title
+      %br
+      Durch einen aussagekräftigen Titel kann das Bild leichter erkannt werden. Er erscheint in der Übersicht.
+    %p
+      = f.label :size
+      %br/
+      = f.text_field :width ,{:maxlength=>3}
+      x
+      = f.text_field :height,{:maxlength=>3}
+      Pixel
+      %br/
+      Jede hochgeladene Kachel dieses Bildes muss die angegebene Größe besitzen. Die Werte müssen jeweils zwischen 150 und 600 Pixeln liegen.
+    -#%p
+      = f.check_box :moderated
+      = f.label :moderated
+      %br/
+      Wenn diese Option eingeschaltet ist, musst du jedes hochgeladene Bild selbst freischalten, bevor es angezeigt wird.
+    %p
+      =f.submit

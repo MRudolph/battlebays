@@ -1,0 +1,13 @@
+<% title t('articles.list') %>
+
+
+<ul>
+<% @articles.each do |article| %>
+    <li><%= link_to h(article.title),article %></li>
+<% end %>
+</ul>
+<br />
+
+<% content_for :context do%>
+<%= Article.human_name %> → <%= link_to t('articles.create'),new_article_path %>
+<% end %>

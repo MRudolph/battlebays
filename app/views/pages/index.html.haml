@@ -1,0 +1,7 @@
+- title t('pages.list')
+= render :partial => 'newpage'
+= render :partial => 'preview',:collection=>@pages
+
+
+- content_for :footer do
+  = link_to t('pages.create'),new_page_path

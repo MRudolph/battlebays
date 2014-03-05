@@ -1,0 +1,5 @@
+-inner=error_messages_for(:object=>boxed_error,:class=>'infoblock',:header_message=>nil)
+-unless inner.empty?
+  .flash_error
+    %h2 Eingabefehler
+    =inner

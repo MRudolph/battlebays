@@ -1,0 +1,13 @@
+-t=preview.tiles.recent.first
+-if t
+  = link_to_tile_on_page t do
+    &= preview.title
+    = "(#{preview.tiles.activated.count})"
+-else
+  %a{:href => edit_page_path(preview) }
+    .page-preview
+      -w,h=preview.mini_dimensions
+      .empty{:style=>{:width=>w*3,:height=>h*3}}
+      .caption
+        &= preview.title
+        (Leer)

@@ -1,0 +1,16 @@
+  <p>
+    <%= form.label :title %> <%= form.text_field :title %>
+  <% if false %>
+  </p>
+    <%= javascript_include_tag 'textile.js' %>
+    <script type="text/javascript">
+        function preview() {
+          var html = convert(document.getElementById('textile').value);
+           document.getElementById('preview').innerHTML=html;
+	} 
+    </script>
+    <% end %>
+    <div style="width:100%;display:inline-block;">
+    <%= form.text_area :content,:onKeyUp=>'preview()', :id=>"textile",:style=>"width:100%" %>
+    </div>
+    <!--<div style="width:30%;border-style:dotted;display:inline-block;height:500px;" id="preview"></div>-->

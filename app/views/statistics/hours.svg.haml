@@ -1,0 +1,33 @@
+! <?xml version="1.0"?>
+! <?xml-stylesheet href="/stylesheets/graph.css" type="text/css"?>
+! <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+-chart_width=768
+-chart_height=170
+-full_height=chart_height+60
+-full_width=chart_width
+-slice_width=chart_width/24.0
+-start=4
+%svg{:xmlns=>"http://www.w3.org/2000/svg", :width=>full_width,:height=>full_height}
+  %defs
+    %clipPath#day
+      %path{:d=>"M 0 0 H 24 1 H 0 Z"}
+  -24.times do |i|
+    -hour=(i+start)%24
+    %rect{:x=>i*slice_width,:height=>chart_height,:width=>slice_width,:class=>cycle("even","odd")+((hour>21||hour<6) ? ' night' : '' )}
+    %text{:x=>(i+0.5)*slice_width,:y=>20,'text-anchor'=>"middle"}
+      = hour
+  
+  %g{:transform=>"translate(0,#{chart_height}) scale(1,-0.9)"}
+    %path.uploaded{ :d=>cubic_cyclic_data_graph(@hours[:uploaded],start,@hours[:max],chart_width,chart_height)}
+    %path.created{ :d=>cubic_cyclic_data_graph(@hours[:created],start,@hours[:max],chart_width,chart_height)}
+  %rect.border{:x=>0,:y=>0,:width=>chart_width,:height=>chart_height }
+  %g.explain{:transform=>"translate(0,#{chart_height})"}
+    %line.uploaded{:x1=>20,:y1=>40,:x2=>40,:y2=>20}
+    %rect.border{:x=>20,:y=>20,:width=>20,:height=>20 }
+    %text{:x=>55,:y=>35}
+      fertiggestellt
+    %line.created{:x1=>220,:y1=>40,:x2=>240,:y2=>20}
+    %rect.border{:x=>220,:y=>20,:width=>20,:height=>20 }
+    %text{:x=>255,:y=>35}
+      reseviert
+

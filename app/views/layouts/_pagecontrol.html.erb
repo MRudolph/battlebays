@@ -1,0 +1,8 @@
+    <span class="bar-left">
+      <%= link_to_unless_current t('pages.start'), root_url%>
+      | <%= link_to_unless_current 'Bilder', pages_path%>
+      | <%= link_to_unless_current 'Texte', article_path(:id=>11)%>
+      <% if (a=yield :context) %>
+        <span class="context"><%=a%></span>
+      <% end %>
+    </span>

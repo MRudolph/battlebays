@@ -1,0 +1,131 @@
+body {
+  background-color: background_color;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+  margin: 0px; }
+
+a {
+  font-weight: bold;
+  text-decoration: none; }
+  a img {
+    border: none; }
+
+.clear {
+  clear: both;
+  height: 0px;
+  overflow: hidden; }
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0; }
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6; }
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66; }
+
+.fieldWithErrors {
+  display: inline; }
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px; }
+  #errorExplanation ul {
+    margin: 2px 24px; }
+    #errorExplanation ul li {
+      font-size: 12px;
+      list-style: disc; }
+
+#menu_bar {
+  background-color: DimGray;
+  width: 100%;
+  padding: 6px 0px 3px 0px; }
+  #menu_bar a {
+    color: white; }
+
+#page_control {
+  padding-left: 6px; }
+
+#user_control {
+  float: right;
+  padding-right: 6px; }
+
+.spaced {
+  margin: 20px;
+  border-width: 2px;
+  border-color: black;
+  padding: 10px;
+  border-style: none; }
+
+.photo_container {
+  border-width: 1px;
+  border-color: DimGray;
+  border-style: solid;
+  padding: 10px;
+  float: left;
+  display: inline-block; }
+
+.user_details th {
+  text-align: left; }
+.user_details h1, .user_details table {
+  margin-left: 20px; }
+
+.user_thumb {
+  border-style: solid;
+  display: inline-block;
+  padding: 3px;
+  margin: 3px;
+  text-align: center;
+  border-color: DimGray;
+  border-width: 1px; }
+
+.boxed {
+  border-style: solid;
+  border-color: DimGray;
+  border-width: 1px;
+  padding: 0px; }
+  .boxed a {
+    color: DimGray; }
+  .boxed h1 {
+    font-size: 14pt;
+    border-style: none;
+    margin: 0px;
+    background-color: DimGray;
+    color: white;
+    margin-bottom: 5px; }
+  .boxed .footer {
+    font-size: 8pt;
+    border-style: none;
+    margin: 0px;
+    background-color: DimGray;
+    color: white;
+    padding: 2px;
+    text-align: right; }
+    .boxed .footer a {
+      color: white; }
+  .boxed.error {
+    border-color: FireBrick; }
+    .boxed.error h1 {
+      background-color: FireBrick; }
+
+.ib {
+  display: inline-block; }

@@ -1,0 +1,29 @@
+<div class="fullheight content">
+<div class="spaced" >
+<div class="boxed">
+<h1><%= yield :title%></h1>
+<% if flash[:error] %>
+<div class="flash_error ">
+<h2><%= t('messages.error') %></h2>
+<div class="infoblock ">
+<%= flash[:error] %>
+</div>
+</div>
+<% end %>
+
+<% if flash[:notice] %>
+<div class="flash_notice ">
+<h2><%= t('messages.notice') %></h2>
+<div class="infoblock ">
+<%= flash[:notice] %>
+</div>
+</div>
+<% end %>
+
+<%= yield %>
+<div class="footer"><%= yield :footer %></div>
+</div>
+</div>
+</div>
+<%= parent_layout 'application'  %>
+

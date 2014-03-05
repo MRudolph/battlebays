@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title><%= yield :title%></title>
+    <%= stylesheet_link_tag 'default' %> 
+    <%= javascript_include_tag 'prototype' %>
+    <%= javascript_include_tag 'height' %>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="menu_bar">
+      <%= render :partial => 'layouts/pagecontrol' %> 
+      <%= yield :menu%>
+      <%= render :partial => 'layouts/usercontrol' %> 
+    </div>
+    <%= yield(:content) or yield %>
+  </body>
+</html>
+  

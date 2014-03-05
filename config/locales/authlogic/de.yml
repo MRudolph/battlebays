@@ -1,0 +1,16 @@
+de:
+  authlogic:
+    error_messages:
+      login_blank: darf nicht leer sein.
+      login_not_found: nicht gefunden.
+      login_invalid: darf nur Buchstaben,Zahlen und .-_@ enthalten.
+      consecutive_failed_logins_limit_exceeded: Zuviele wiederholte Login-Versuche.
+      email_invalid: scheint keine gültige Emailadresse zu sein.
+      password_blank: fehlt.
+      password_invalid: ungültig.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        username: Name
+        password: Passwort

@@ -1,0 +1,6 @@
+<%form_tag(tiles_path,:method=>:post) do %>
+  <%=hidden_field_tag "tile[x]",x%>
+  <%=hidden_field_tag "tile[y]",y%>
+  <%=hidden_field_tag "tile[page_id]",page.id%>
+  <%=submit_tag t('tiles.reserve')%>
+<% end %>

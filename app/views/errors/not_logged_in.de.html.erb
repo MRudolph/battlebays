@@ -1,0 +1,5 @@
+<% title 'Nicht eingeloggt' %>
+Um diese Aktion durchzuführen, müssen sie eingeloggt sein.
+<%= render :partial=>'user_sessions/form' %>
+
+<%content_for :footer do %><%=link_to t('users.create'),new_user_path %><%end%>

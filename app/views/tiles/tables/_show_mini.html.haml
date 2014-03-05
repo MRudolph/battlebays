@@ -1,0 +1,18 @@
+-dim=page.mini_dimensions
+%table.mini.tilemap{:class=>tilemap_css(*dim)}
+  -table.each_row do |row|
+    %tr
+      -row.each_with_column do |tile,col|
+        -c=classify_tile(tile)
+        -own = tile.user_id==current_user.id rescue nil
+        -awaiting_activation = own && c==:uploaded
+        -tile_tag col,row.row,tile,(c==:activated) || awaiting_activation,:mini do
+          -if awaiting_activation
+            .actions
+              :plain
+                ...
+  -unless block.nil?
+    %tr
+      %td{:colspan=>table.width}
+        .caption
+          = capture_haml &block

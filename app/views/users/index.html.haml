@@ -1,0 +1,30 @@
+- title t('users.list') 
+
+= render :partial => 'rostrum', :object=>create_groups_from_sorted_users(@users,3) 
+%table.highscore
+  %thead
+    %tr
+      %th.number Platz
+      %th Nutzer
+      %th.number Punkte
+      %th.number Kacheln
+  %tbody
+    -position=0
+    -oldscore=nil
+    - @users.each_with_index do |user,i|
+      -if user.points != oldscore
+        -position+=1
+        -oldscore=user.points
+      %tr
+        %td.number= position
+        %td= user_text_link user
+        %td.number= user.points
+        %td.number= user.tiles.activated.count
+ 
+-content_for(:context) do
+  Account →
+  -if current_user
+    = link_to t('users.my_page'),current_user
+  -else
+    = link_to t('users.create'),new_user_path
+

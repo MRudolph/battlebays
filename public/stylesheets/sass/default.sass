@@ -1,0 +1,363 @@
+!background_color=#ddd
+!text_color= black
+!background_color2=!background_color*0.45+!text_color*0.55
+!text_color2=!background_color
+!error_color=FireBrick
+!boxed_color=!background_color*0.7+!background_color2*0.3
+!bar_color= #AABEF7
+=bar(!spacing_v,!spacing_h=!spacing_v)
+  width: 100%
+  padding-top= !spacing_v
+  padding-left: 0px
+  padding-right: 0px
+  padding-bottom= !spacing_v/2
+  .bar-left
+    padding-left= !spacing_h
+  .bar-right
+    float: right
+    padding-right= !spacing_h
+  
+  
+=boxy(!outer_background,!outer_text,!inner_background,!inner_text,!border_width=1px,!color_links=true,!padding_top=5px,!padding_sides=10px)
+  border-style: solid
+  border-color= !outer_background
+  border-width= !border_width
+  padding-top= !padding_top 
+  padding-left= !padding_sides
+  padding-right= !padding_sides
+  padding-bottom=!padding_top/2
+  background-color= !inner_background
+  color= !inner_text
+  
+
+  h1
+    font-size: 14pt
+    border-style: none
+    margin= -!padding_top "" -!padding_sides 5px
+    background-color= !outer_background
+    color= !outer_text
+    padding-top= !padding_top
+    padding-left= !padding_sides
+    padding-right= !padding_sides
+    padding-bottom = !padding_top/2
+    @if color_links
+      a
+        color= !outer_text
+  h2
+    font-size: 10pt
+    border-style: none
+    margin= -!padding_top "" -!padding_sides 5px
+    background-color= !outer_background
+    color= !outer_text
+    padding-top= !padding_top
+    padding-left= !padding_sides
+    padding-right= !padding_sides
+    padding-bottom = !padding_top/2
+    @if color_links
+      a
+        color= !outer_text
+	
+  .footer
+    font-size: 8pt
+    border-style: none
+    margin-top= !padding_top
+    margin-left= -!padding_sides
+    margin-right= -!padding_sides
+    margin-bottom: 0
+    background-color= !outer_background
+    color= !outer_text
+    padding: 3px
+    text-align: right
+    @if color_links
+      a
+        color= !outer_text
+
+=common_table
+  padding: 10px
+  font-size: 10pt
+  .number
+    padding-right: 15px
+    text-align: left
+  th
+    font-weight: bold
+    text-align: left
+  td
+    padding-right: 15px
+
+=with_bars
+  .bar
+    background-color= !bar_color
+    overflow: visible
+    white-space: nowrap
+
+
+=message_box(!back,!border)
+  background-color= !back
+  border= "solid 1px " !border
+  padding: 0px
+  h2
+    background-color= !back
+    font-size: 8
+    margin: 0px 0px 10px 0px
+    padding: 2px
+    color= !border
+
+body
+  background-color= !background_color
+  font-family: Verdana, Helvetica, Arial
+  font-size: 14px
+  margin: 0px
+  padding:10px
+
+a
+  text-decoration: none
+  color: RoyalBlue       
+  
+img
+  border: none
+
+form
+  margin: 0px
+
+
+
+
+
+
+.fieldWithErrors
+  display: inline
+
+
+
+
+#menu_bar
+  +bar(6px,40px)
+  background-color= !background_color2
+  
+  a
+    color= !text_color2
+  .context
+
+    //border-left= 1px solid !text_color2
+    //border-top= 1px solid !text_color2
+    //border-right= 1px solid !text_color2
+    background-color= !background_color
+    margin-left: 40px
+    padding: 1px 20px 3px
+    
+    a
+      color= !text_color
+      
+.spaced
+  margin: 30px
+  border-width: 2px
+  border-color: black
+  padding: 0px
+  border-style: none
+
+
+.photo_container
+  border-width: 1px
+  border-color: DimGray
+  border-style: solid
+  padding: 10px
+  float: left
+  display: inline-block
+  
+
+.user_details
+  th
+    text-align: left
+
+  h1, table
+    margin-left: 20px
+
+
+.user_thumb
+  border-style: solid
+  display: inline-block
+  padding: 3px
+  margin: 3px
+  text-align: center
+  border-color: DimGray
+  border-width: 1px
+
+
+.boxed
+  +boxy(!boxed_color,!text_color2,!background_color,!text_color)
+
+.error
+  +boxy(!boxed_color,!error_color,!background_color,!text_color)
+ 
+.tilemap
+  border= 1px dotted !background_color2
+  text-align: center
+  border-collapse: collapse
+  border: 0
+  td
+    padding: 0
+
+  .actions
+    background-color= "rgba(0,0,0,0.7)"
+    display: inline-block
+    padding: 5px
+    margin: 10px
+    -moz-border-radius: 3px 3px 3px p3x
+
+  .action-box
+    margin: 15px
+    text-align: center  
+    .owner
+      text-align: left
+    .points
+      text-align: right
+    .remaining
+      color: white
+      font-size: 8pt
+  .reserved
+    .action-box
+      border: 1px dotted black
+  .reservable
+    .action-box
+      border: 1px dotted black
+  .blank
+    .action-box
+      border: 1px dotted black
+
+.mini.tilemap
+  border= "2px solid" !background_color2
+  display: inline-block
+  margin-right: 10px
+  vertical-align: text-top
+  margin-top: 10px
+  margin-bottom: 15px
+
+.edit
+  background-color= !background_color2
+  //width: 250px
+  float: left
+  padding-top: 20
+  padding-left: 20
+  padding-right: 10
+  height:100
+  a
+    color= !text_color2
+  table
+    +common_table
+    +with_bars
+  h1
+    font-size: 20px
+    
+.content
+  background-color= !background_color
+  overflow: scroll
+  
+.translation_missing
+  text-decoration: blink
+  color: red  
+
+!stepsize = 30px
+=step(!number=1)
+  vertical-align: text-bottom
+  display: inline-block
+  .lower
+    height= !number*!stepsize
+      
+.stair
+  border= !background_color2 0px solid
+  padding: 10px
+  display: inline-block
+  padding-top: 5px
+  margin-bottom: 30px
+  .lower
+    background-color= !background_color2
+    color= !text_color2
+    text-align: center
+    .rank
+      font-size: 16pt
+      vertical-align: middle
+  .upper
+    padding: 2px 10px
+  .worse
+    +step(1)
+  .same
+    +step(2)
+  .better
+    +step(3)
+  h2
+    background-color= !background_color
+    color= !text_color
+
+
+.scores
+  +common_table
+  +with_bars
+  border-collapse: collapse
+  tfoot
+    td
+      border-top=  "1px solid" !text_color
+
+
+
+
+.missing
+  border= "2px dashed" !background_color2
+  display: inline-block
+
+.page-preview
+  border= "2px solid" !background_color2
+  display: inline-block
+  margin: 10 10 0 0
+  vertical-align: text-top
+  .empty
+    width: 150px
+    height: 150px
+  .caption
+    padding: 1px
+    text-align: center
+    width: 150px
+    overflow: hidden
+    white-space: nowrap
+
+
+.infoblock
+  margin-bottom: 20px
+  padding-left: 20px
+  padding-right: 10px
+  h2
+    margin-left: -30px
+    margin-bottom: 20px
+.highscore
+  +common_table
+.photospace
+  min-height: 230px
+  .photo
+    float: right
+    display: inline-block
+    margin-top: 12px
+    margin-right: 12px
+    text-align: center
+  .stair
+    margin-top: 10px
+
+.uploadform
+  display: inline-block
+  padding: 20px
+  vertical-align: top
+
+.errormark
+  color= !error_color
+
+
+.flash_notice, .flash_error
+  padding: 5px 8px
+  margin: 10px 0
+
+
+.flash_notice
+  +message_box(!bar_color,!bar_color-#333)
+
+.flash_error
+  +message_box(#FCC,#C66)
+
+

@@ -1,0 +1,34 @@
+<% rank=stair.rank%>
+<div class="stair">
+  <h2>Plazierung</h2>
+  <div class="worse">
+    <div class="upper">
+      <% stair.on_worse_rank.all({:limit=>4}).each do |u| %>
+        <%= user_photo_link u,:thumb%>
+       <% end %>
+    </div>
+    <div class= "lower"><div class="rank"><%=rank+1%></div></div>
+  </div><div class="same">
+    <div class="upper">
+      <% same=stair.on_same_rank.all({:limit=>4}).to_a 
+            left=same[0..(same.length-1)/2]
+	    right=same[(same.length+1)/2..-1]
+	    left.each do |u|%>
+        <%= user_photo_link u,:thumb%>
+       <% end %>
+       <%= image_tag stair.photo.url(:profile) %>
+        <%right.each do |u|%>
+        <%= user_photo_link u,:thumb%>
+       <% end %>
+    </div>
+    <div class= "lower"><div class="rank"><%=rank%></div><div class="points"><%=stair.points%> Punkte</div></div>
+    
+  </div><div class="better">
+    <div class="upper">
+      <% stair.on_better_rank.all({:limit=>4}).each do |u| %>
+        <%= user_photo_link u,:thumb%>
+       <% end %>
+    </div>
+    <div class= "lower"><div class="rank"><%=rank-1%></div></div>
+  </div>
+</div>

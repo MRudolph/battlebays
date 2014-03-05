@@ -1,0 +1,60 @@
+-title "Statistik"
+.infoblock
+  Hier findest du einige statistische Daten zu den Nutzern und Bildern.
+  Zusätzlich gibt es noch Einzelstatistiken auf den jeweiligen Nutzerseiten.
+
+%h2 Benutzer
+.infoblock
+
+  %h3 Angemeldete Benutzer
+  Seit
+  = distance_of_time_in_words_to_now(User.first(:order=>'created_at',:select=>'created_at').created_at)
+  haben sich
+  = User.count
+  Benutzer angemeldet.
+
+  %h3 Aktivität aller Benutzer nach Tageszeit
+  != hour_statistic_svg
+
+  %h3 Neuster Nutzer
+  -newest_user = User.last(:order=>'created_at')
+  = user_photo_link(newest_user,:thumb)
+  = user_text_link(newest_user)
+  = "(angemeldet seit #{distance_of_time_in_words_to_now(newest_user.created_at)})"
+
+  %h3 Punktstärkster Nutzer
+  -best_user = User.last(:order=>'points')
+  = user_photo_link(best_user,:thumb)
+  = user_text_link(best_user)
+  hat
+  = best_user.points
+  Punkte.
+
+%h2 Bilder
+.infoblock
+
+  %h3 Erstellte Bilder
+  = "Es wurden insgesamt #{Page.count} Bilder erstellt."
+  
+  %h3 Größtes Bild
+  - biggest=Page.all.max_by{|x| x.tiles.count }
+  Das Bild 
+  &= biggest.title
+  ist mit
+  &= biggest.tiles.count
+  Kacheln das größte.
+  = "Es existiert #{distance_of_time_in_words_to_now(biggest.created_at)}."
+
+%h2 Kacheln
+.infoblock
+
+  %h3 Erstellte Kacheln
+  = "Es wurden insgesamt #{Tile.count} Kacheln reserviert, davon sind #{Tile.activated.count} fertig."
+
+  %h3 Malzeiten
+  - times = Tile.with_drawing_time.collect {|x| x.drawing_time }.sort
+  Das Malen der Kacheln dauerte zwischen
+  = "#{distance_of_time_in_words(times.first)} und #{distance_of_time_in_words(times.last)}."
+  Durchschnittlich waren es
+  = "#{distance_of_time_in_words(Tile.with_drawing_time.average_drawing_time)}."
+

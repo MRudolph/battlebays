@@ -1,0 +1,44 @@
+%table.tilemap{:class=>tilemap_css(page.width,page.height)}
+  -table.each_row do |row|
+    %tr
+      -row.each_with_column do |tile,col|
+        -page = tile.page if !page  && tile.is_a?(Tile)
+        -c=classify_tile(tile)
+        -own = tile.user_id==current_user.id rescue nil
+        -awaiting_activation = own && c==:uploaded
+        -activatable=tile.can_be_activated?(current_user) rescue nil
+        -tile_tag col,row.row, tile,(c==:activated) || awaiting_activation || activatable do
+          -tile_action_box(tile) do
+            -case
+            -when (c==:activated)
+              -if tile.can_be_edited?(current_user)
+                .actions
+                  = link_to t('actions.edit'), edit_tile_path(tile)              
+            -when c==:reservable
+              .actions
+                -form_tag(tiles_path,:method=>:post) do 
+                  =hidden_field_tag "tile[x]",col
+                  =hidden_field_tag "tile[y]",row.row
+                  =hidden_field_tag "tile[page_id]",page.id
+                  -#submit_tag t('tiles.reserve')
+                  =link_to_function t('tiles.reserve'), "$(this).up('form').submit()"
+            -when c==:reserved
+              .actions
+                = remaining_time_of tile
+                -if tile.can_be_deleted?(current_user)
+                  %div=link_to t('actions.delete'),tile_path(tile),:method=>:delete
+                -if tile.can_be_uploaded?(current_user)
+                  -#form_for tile, :html => { :multipart => true } do |f|
+                    = f.label :image 
+                    = f.file_field :image, {:maxlength =>10}
+                    = f.submit t('actions.upload')
+                  %div= link_to t('actions.upload'), edit_tile_path(tile)
+            -when c==:uploaded
+              -if activatable
+                TODO
+              -elsif own
+                .actions
+                  Diese Kachel gehört dir und ist noch nicht freigeschaltet.
+              -else
+                .actions
+                  Wartet auf Freischaltung

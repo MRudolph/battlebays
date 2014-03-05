@@ -1,0 +1,5 @@
+<% if userfooter %>
+  <%= user_photo_link(userfooter,:thumb) %><%= user_text_link(userfooter) %>
+<% else %>
+  <%t('users.deleted')%>
+<% end %>

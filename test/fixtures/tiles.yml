@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  x: 1
+  y: 1
+  page_id: 1
+  status: 1
+  points: 1
+
+two:
+  user_id: 1
+  x: 1
+  y: 1
+  page_id: 1
+  status: 1
+  points: 1

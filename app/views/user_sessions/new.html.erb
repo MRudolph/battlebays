@@ -1,0 +1,7 @@
+<% content_for :boxstyle do%>ib<%end%>
+<% title t('users.login') %>
+<%= boxed_error_messages_for @user_session %>
+<%= render :partial => 'form' %>
+
+<% content_for :footer do %><%=link_to t('users.create'),new_user_path %><%end%>
+

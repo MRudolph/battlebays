@@ -1,0 +1,10 @@
+<% title t('tiles.show') %>
+<div class="tilematrix">
+  <%= render :partial => '/2dtiles', :object=>@tile.surroundings %>
+</div>
+<table>
+<tr><th>Erstellt von</th><td><%= user_text_link @tile.user %> </td></tr>
+<tr><th>Erstellt am</th><td><%= @tile.created_at %> </td></tr>
+<tr><th>Punkte</th><td><%= @tile.points %> </td></tr>
+
+<%= footer_for @tile %>

@@ -1,0 +1,7 @@
+<% content_for :footer do %>
+<% by||=:user %>
+<%= viewed.class.human_name %> <%= t('by') %> <%= user_text_link viewed.send(by)%> 
+||
+<%= link_to_unless_current( t('actions.edit'), edit_polymorphic_path(viewed)) { ""} %>
+<%= link_to ( t('actions.delete'), viewed, :confirm => t('actions.confirm_sure'), :method => :delete) %>
+<% end%>

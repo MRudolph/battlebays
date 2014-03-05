@@ -1,0 +1,44 @@
+Anleitung( getestet unter Ubuntu 9.10)
+Installation von Ruby
+=====================
+
+Für dieses Programm wird Ruby sowie das Web-Framwork "Ruby on Rails" benötigt.
+Das Programm wurde mit Ruby 1.8.7 und Rails 2.3.5 getestet.
+Die Datenbank liegt im SQLite3-Format vor.
+
+Es wird die Benutung von RVM empfohlen:
+http://rvm.beginrescueend.com/rvm/install/
+
+Wenn RVM installiert ist, kann Ruby 1.8.7 mittels
+>rvm install 1.8.7
+
+dann wechselt man zur installierten Ruby version
+>rvm 1.8.7
+
+Nachdem die installation hoffentlich erfolgreich war, muss man noch die openssl-Unterstützung compilieren.
+>sudo apt-get install libssl-dev
+>cd ~/.rvm/src/ruby-1.8.7/ext/openssl
+>ruby extconf.rb
+>make && make install
+
+dann installiert man Rails mittels
+>gem install rails
+
+und die sqlite3-Datenbankanbindung mit
+>gem install sqlite3-ruby
+
+Installation der benötigten Plugins
+===================================
+
+wenn man sich im Hauptverzeichnis des Projekts befindet, kann man mittels
+>rake gems:install
+die benötigten Plugins installieren.
+Sollte eine Fehlermeldung kommen, dass Rails nicht installiert sei, muss man vorher zum richtigen Ruby wechseln.
+>rvm 1.8.7
+
+Starten der Anwendung
+=====================
+Im Hauptverzeichnis des Projektes startet man die Anwendung mit
+>ruby script/server -e production
+Der Server startet dann auf Port 3000.
+

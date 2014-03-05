@@ -1,0 +1,11 @@
+<% title t('articles.update') %>
+
+<% form_for(@article) do |f| %>
+  <%= boxed_error_messages_for @article %>
+    <%= render :partial => f%>
+    <%= f.submit t('articles.update_submit') %>
+  </p>
+<% end %>
+
+<%= footer_for @article %>
+<% context_menu_for @article %>

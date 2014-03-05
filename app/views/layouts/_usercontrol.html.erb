@@ -1,0 +1,9 @@
+    <span class="bar-right">
+      <%= link_to t('users.list'), users_path%>
+      &nbsp;&nbsp;
+      <% if current_user %>
+      <%= link_to t('users.logout'), logout_path%> [ <%= user_text_link current_user %> ]
+      <% else %>
+      <%= link_to t('users.login'), login_path%> | <%= link_to t('users.create'), new_user_path%>
+      <% end %>
+    </span>

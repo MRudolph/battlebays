@@ -1,0 +1,25 @@
+.created {
+  fill:transparent;
+  stroke:RoyalBlue;
+  stroke-width:3;
+  stroke-dasharray: 9, 5;
+}
+.uploaded {
+  fill:transparent;
+  stroke:FireBrick;
+  stroke-width:3;
+}
+.border {
+  stroke-width:3;
+  fill:transparent;
+  stroke:black;
+}
+.even {
+  fill:#ddd;
+}
+.even.night{
+  fill:#636363;
+}
+.odd {
+  fill:#B7B7B7;
+}

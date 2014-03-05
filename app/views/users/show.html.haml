@@ -1,0 +1,60 @@
+- title h(@user.displayed_name)
+- context_menu_for @user
+.photospace
+  .photo
+    = user_photo_link @user,:profile
+  = render :partial=>'stair', :object=>@user
+  - recent=@user.recent_tiles(5)
+.infoblock
+  %h2
+    Neueste Kacheln
+  -if recent.empty?
+    = user_text_link(@user)
+    hat noch keine Kacheln erstellt oder sie sind noch nicht freigeschaltet.
+  -else
+    -recent.each do |tile|
+      =link_to_tile_on_page(tile)
+.infoblock
+  %h2
+    Punkte
+  -scoring=@user.point_distribution.sort.reverse
+  -max=scoring.collect{|s,c| c}.max
+  -counts=scoring.collect{|s,c| c}.sum
+  %table.scores
+    %thead
+      %tr
+        %th.number
+          Punktzahl
+        %th.number
+          Ø Zeit
+        %th.number
+          Kacheln
+        %th.number
+          Anteil  
+    %tbody
+      -scoring.each do |score,count|
+        %tr
+          %td
+            = "#{score} Punkte"
+          %td
+            = distance_of_time_in_words(@user.tiles.with_drawing_time.average_drawing_time(:conditions=>["points=?",score]),0,true)
+          %td
+            = count
+          %td
+            .bar{:style => "width:#{(100.0*count/max).round}%"}
+              = "#{(100.0*count/counts).round}%"
+    %tfoot
+      %tr
+        %td
+          = @user.points
+          Punkte
+        %td
+          = distance_of_time_in_words(@user.tiles.with_drawing_time.average_drawing_time,0,true)
+        %td
+          = counts
+          Kacheln
+        %td
+
+.infoblock
+  %h2 Aktivität nach Tageszeit
+  != hour_statistic_svg(@user)

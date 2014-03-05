@@ -1,0 +1,10 @@
+<% title t('articles.create') %>
+
+<% form_for(@article) do |f| %>
+  <%= boxed_error_messages_for @article %>
+  <%= render :partial => f%>
+    <%= f.submit t('articles.create_submit') %>
+  </p>
+<% end %>
+
+

@@ -1,0 +1,103 @@
+-title "Startseite"
+-pages=Page.recent.all(:limit=>6)
+-shown=pages.shift(5)
+-if current_user
+  - rank=current_user.rank
+
+-content_for :head do
+  =javascript_include_tag 'scriptaculous.js'
+
+
+.infoblock.photospace
+  -if current_user
+    %div.photo
+      =user_photo_link current_user,:profile
+      %br/
+      %span{:style=>"width=>100%;text-align:center;"}
+        ="Platz #{rank}"
+  %p
+    ="Herzlich Willkommen auf dem Battlebay Server. Dies sind die #{shown.length} Bilder, an denen zuletzt etwas geändert wurde:"
+  = render :partial => 'pages/preview',:collection=>shown
+  - unless pages.empty?
+    %p
+      Alle Weiteren findest du auf der
+      ="#{link_to "Bilderliste",pages_path}."
+
+%h2 Was sind Battlebays
+.infoblock
+  %p
+    :textile
+        Battlebays sind eine Form von Wettstreit, der sich in Grafikforen entwickelt hat.
+        Zusammen mit anderen soll gemeinsam ein großes Bild erstellt werden.
+        Dazu wird das Bild in kleine Kacheln(sogenannte "Steps") unterteilt und von verschiedenen Künstlern gemalt.
+        Dabei müssten verschiedene Regeln beachtet werden.
+        Diese werden im nächsten Abschnitt erläutert.
+        Auf diesem Server werden an die Maler Punkte verteilt.
+        Die Punkte der einzelnen Spieler kannst du im "Benutzerverzeichnis":/users sehen.
+    -if current_user
+      -if rank==1
+        Und das Beste ist:
+        %strong
+          Du führst momentan diese Rangliste an.
+      -else
+        Du bist übrigens gerade auf 
+        %strong<
+          ="Platz #{rank}."
+    -else
+      Wenn du gern teilnehmen möchtest, erstelle dir einfach einen Account. Die
+      = link_to "Anmeldung",new_user_path
+      ist kostenlos. Wenn du bereits einen Account hast, solltest du dich
+      = link_to "einloggen",login_path
+      = "."
+  :textile
+      Wenn du dich für die Hintergründe von Battlebays interessierst, findest du "hier":/articles/3 weitere Informationen.
+      Auch über die Technik der "Collage":/articles/1 im Wandel der Zeit sind einige Informationen verfügbar.
+%h2 So geht's
+.infoblock
+  %h3 Reservierung
+  %p
+    :textile
+        !{float:right}/images/tut/bild-bearbeiten.png!
+        Suche dir, nachdem du dich eingeloggt hast, zuerst in der "Bilderliste":/pages ein Bild aus, bei dem du mitmachen willst.
+        Drücke dann am oberen Rand der Seite auf "bearbeiten".
+        Dann wechselt die Ansicht.
+        Suche dir jetzt den von dir gewünschten Platz aus, an dem du das Bild fortführen willst.
+        Klicke an dieser Stelle auf "reservieren".
+        Ab der Reservierung beginnt ein Countdown zu laufen. Du hast jetzt 3 Tage Zeit, um die Kachel zu malen und hochzuladen.
+        Falls du die Kachel nicht reservieren kannst, kann das verschiedene Gründe haben.
+        Der häufigste ist wohl, dass die Kachel bereits reserviert ist.
+        Das ist daran zu erkennen, dass links unten der Name des Nutzers angezeigt wird, der die Kachel reserviert hat.
+        In der Mitte wird außerdem angezeigt, wie lange er noch Zeit hat, um das Bild hochzuladen.
+        Ist der Countdown abgelaufen, wird die Kachel nicht automatisch gelöscht; aber jeder, der die Kachel gerne hätte, kann sie löschen und selbst reservieren.
+        Außerdem ist es nicht möglich, Kacheln neben bereits reservierten Kacheln auszuwählen.
+        Denn wenn die Kacheln unabhängig von einander gemalt werden, passen sie wahrscheinlich nicht zusammen.
+        Deshalb muss gewartet werden, bis die Nachbarkachel hochgeladen ist.
+  %h3 Hochladen der Grafik
+  :textile
+      Jetzt kannst du die Grafik mit einem Grafikprogramm deiner Wahl anfertigen.
+      Diese Grafik sollte nahtlos in die benachbarten Kacheln übergen, sodass keine Kante zu sehen ist.
+      Achte auch darauf, dass diese in der richtigen Größe sein muss.
+      Falls du diese Größe nicht kennst, kannst du diese auf der Seite einsehen, die nach einem Klick auf "hochladen" erscheint.
+      Hier hast du auch die Möglichkeit, die Bilder der Nachbarkacheln herunterzuladen.
+      Nach dem Upload bekommst du deine Punkte gutgeschrieben.
+
+%h2 Punkte
+.infoblock
+  %p  
+    :textile
+        Auf diesem Server werden für die Erstellung der Kacheln Punkte verteilt.
+        Die Punktzahl ist einfach die Anzahl der Kacheln, an die deine Kachel angrenzt.
+        Du kannst also pro Kachel zwischen 1 und 4 Punkte bekommen.
+        Auf die Startkachel eines Bildes gibt es keine Punkte.
+        Im "Benutzerverzeichnis":/users kannst du dir anschauen, wer wieviel Punkte gemacht hat.
+        Wenn du dich für weitere Informationen interessierst, kannst du auch einen Blick auf die "Statistik":/statistic werfen.
+
+
+%h2 Neue Seiten erstellen
+.infoblock
+  %p
+    :textile
+        Sollte dir keins der verfügbaren Bilder zusagen, kannst du dir auch ein "eigenes erstellen":/pages/new.
+        Dazu musst du nur einen Titel vergeben und festlegen, welche Größe die hochgeladenen Kacheln haben müssen.
+        Wenn du ein Bild erstellst, bist du für es verantwortlich.
+        Du kannst Kacheln, die du für nicht angemessen hälst, löschen.

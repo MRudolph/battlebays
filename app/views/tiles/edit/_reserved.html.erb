@@ -1,0 +1,16 @@
+<% if own %>
+  Diese Kachel gehört dir!
+<% else %>
+  Diese Kachel hat <%= user_text_link tile.user %> reserviert.
+<% end %>
+
+<% if tile.can_be_deleted?(current_user) %>
+  <%=button_to t('actions.delete'),tile_path(tile),:method=>:delete %>
+<% end %>
+<% if tile.can_be_uploaded?(current_user) %>
+  <% form_for tile, :html => { :multipart => true } do |f|%>
+    <%= f.label :image %>
+    <%= f.file_field :image, {:maxlength =>10} %>
+    <%= f.submit t('actions.upload') %>
+  <% end %>
+<% end %>

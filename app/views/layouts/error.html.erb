@@ -1,0 +1,8 @@
+<div class="spaced">
+<div class="error">
+<h1><%= yield :title%></h1>
+<%= yield %>
+<div class="footer"><%= yield(:footer) || link_to(t('navigation.back'),:back)%></div>
+</div>
+</div>
+<%= parent_layout 'application'  %>

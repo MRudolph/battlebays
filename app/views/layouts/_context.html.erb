@@ -1,0 +1,23 @@
+<% links=[]
+
+  a=link_to_unless_current( t('actions.show'), context) { nil}
+  links << a if a
+
+
+
+if context.respond_to? :can_be_updated?
+  a=context.can_be_updated?(current_user) ? link_to_unless_current( t('actions.edit'), edit_polymorphic_path(context)) { nil} : nil
+  links << a if a
+end
+
+if context.respond_to? :can_be_deleted?
+  a=context.can_be_deleted?(current_user)  ?  link_to( t('actions.delete'), context, :confirm => t('actions.confirm_sure'), :method => :delete)  : nil
+  links << a if a
+end
+%>
+
+<% unless links.empty?
+  content_for :context do %>
+<%= context.class.human_name %> →&nbsp; <%=links.join(' | ') %>
+<% end
+end%>

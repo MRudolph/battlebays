@@ -1,0 +1,30 @@
+-first,second,third,*rest=rostrum
+-small||=false
+.stair
+  .same
+    .upper
+      -(second||[]).each do |user|
+        = user_photo_link user, :thumb
+    .lower
+      .rank
+        2
+      .points
+        =second.first.points rescue ""
+  .better>
+    .upper
+      -(first||[]).each do |user|
+        = user_photo_link user, small ? :thumb : :profile
+    .lower
+      .rank
+        1
+      .points
+        =first.first.points rescue ""
+  .worse>
+    .upper
+      -(third||[]).each do |user|
+        = user_photo_link user, :thumb
+    .lower
+      .rank
+        3
+      .points
+        =third.first.points rescue ""
